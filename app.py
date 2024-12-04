@@ -53,80 +53,119 @@ def predict():
             Airline_GoAir = 0
             Airline_IndiGo = 0
             Airline_JetAirways = 1
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 0
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
+
+        elif (airline=='Jet Airways Business'):
+            Airline_AirIndia = 0
+            Airline_GoAir = 0
+            Airline_IndiGo = 0
+            Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 1
+            Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
+            Airline_SpiceJet = 0
+            Airline_Vistara = 0
+            Airline_Vistara_Premium_economy = 0
 
         elif (airline=='IndiGo'):
             Airline_AirIndia = 0
             Airline_GoAir = 0
             Airline_IndiGo = 1
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 0
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
 
         elif (airline=='Air India'):
             Airline_AirIndia = 1
             Airline_GoAir = 0
             Airline_IndiGo = 0
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 0
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
             
         elif (airline=='Multiple carriers'):
             Airline_AirIndia = 0
             Airline_GoAir = 0
             Airline_IndiGo = 0
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 1
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 0
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
             
         elif (airline=='SpiceJet'):
             Airline_AirIndia = 0
             Airline_GoAir = 0
             Airline_IndiGo = 0
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 1
             Airline_Vistara = 0
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
             
         elif (airline=='Vistara'):
             Airline_AirIndia = 0
             Airline_GoAir = 0
             Airline_IndiGo = 0
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 1
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
 
         elif (airline=='GoAir'):
             Airline_AirIndia = 0
             Airline_GoAir = 1
             Airline_IndiGo = 0
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 0
-            Airline_Other = 0
+            Airline_Vistara_Premium_economy = 0
 
+        elif (airline=='Airline_Multiple_carriers_Premium_economy'):
+            Airline_AirIndia = 0
+            Airline_GoAir = 0
+            Airline_IndiGo = 0
+            Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
+            Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 1
+            Airline_SpiceJet = 0
+            Airline_Vistara = 0
+            Airline_Vistara_Premium_economy = 0
         else:
             Airline_AirIndia = 0
             Airline_GoAir = 0
             Airline_IndiGo = 0
             Airline_JetAirways = 0
+            Airline_JetAirwaysBusiness = 0
             Airline_MultipleCarriers = 0
+            Airline_Multiple_carriers_Premium_economy = 0
             Airline_SpiceJet = 0
             Airline_Vistara = 0
-            Airline_Other = 1
+            Airline_Vistara_Premium_economy = 1
 
 
         Source = request.form["Source"]
@@ -168,30 +207,42 @@ def predict():
             Destination_Delhi = 0
             Destination_Hyderabad = 0
             Destination_Kolkata = 0
+            Destination_New_Delhi = 0
         
         elif (Source == 'Delhi'):
             Destination_Cochin = 0
             Destination_Delhi = 1
             Destination_Hyderabad = 0
             Destination_Kolkata = 0
+            Destination_New_Delhi = 0
 
         elif (Source == 'Hyderabad'):
             Destination_Cochin = 0
             Destination_Delhi = 0
             Destination_Hyderabad = 1
             Destination_Kolkata = 0
+            Destination_New_Delhi = 0
 
         elif (Source == 'Kolkata'):
             Destination_Cochin = 0
             Destination_Delhi = 0
             Destination_Hyderabad = 0
             Destination_Kolkata = 1
+            Destination_New_Delhi = 0
+
+        elif (Source == 'New_Delhi'):
+            Destination_Cochin = 0
+            Destination_Delhi = 0
+            Destination_Hyderabad = 0
+            Destination_Kolkata = 0
+            Destination_New_Delhi = 1
 
         else:
             Destination_Cochin = 0
             Destination_Delhi = 0
             Destination_Hyderabad = 0
             Destination_Kolkata = 0
+            Destination_New_Delhi = 0
 
 
         prediction=model.predict([[
@@ -208,17 +259,21 @@ def predict():
             Airline_GoAir,
             Airline_IndiGo,
             Airline_JetAirways,
+            Airline_JetAirwaysBusiness,
             Airline_MultipleCarriers,
-            Airline_Other,
+            Airline_Multiple_carriers_Premium_economy,
+            Airline_Vistara_Premium_economy,
             Airline_SpiceJet,
             Airline_Vistara,
             Source_Chennai,
+            Source_Delhi,
             Source_Kolkata,
             Source_Mumbai,
             Destination_Cochin,
             Destination_Delhi,
             Destination_Hyderabad,
             Destination_Kolkata,
+            Destination_New_Delhi,
         ]])
 
         output=round(prediction[0],2)
